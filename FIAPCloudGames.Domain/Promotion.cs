@@ -1,21 +1,19 @@
-﻿namespace FIAPCloudGames.Domain.Entities;
+﻿using FIAPCloudGames.Domain.Entities;
 
 public class Promotion
 {
-    public Guid Id { get; private set; }
-    public Guid GameId { get; private set; }
-    public decimal DiscountPercentage { get; private set; }
-    public DateTime StartDate { get; private set; }
-    public DateTime EndDate { get; private set; }
+    public Guid Id { get; set; }
+    public Decimal Discount { get; set; }
+    public DateTime StartDate { get; set; }
+    public DateTime EndDate { get; set; }
 
-    private Promotion() { }
+    public Game Game { get; set; } // Adicionando a propriedade Game
 
-    public Promotion(Guid gameId, decimal discountPercentage, DateTime startDate, DateTime endDate)
+    public Promotion(decimal discount, DateTime startDate, DateTime endDate, Game game)
     {
-        Id = Guid.NewGuid();
-        GameId = gameId;
-        DiscountPercentage = discountPercentage;
+        Discount = discount;
         StartDate = startDate;
         EndDate = endDate;
+        Game = game;
     }
 }
